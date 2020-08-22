@@ -6,7 +6,6 @@ from game import Game
 
 # import the `season` file and make sure generate_random_games only
 # makes games with appropriate team names (and never has a team playing itself)
-
 # Complete the FootballGameTest
 
 

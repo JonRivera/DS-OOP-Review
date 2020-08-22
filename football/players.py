@@ -1,14 +1,18 @@
-'''Player class to record stats for individual players
-'''
+"""Player class to record stats for individual players
+"""
 
 
 class Player:
-    '''Dosctring TODO
-    THIS IS NOT A VERY GENERALIZABLE MODEL IF YOU KNOW THINGS ABOUT FOOTBALL
-    and that's okay
-    '''
+    """
+    Stores a player's corresponding stats
+    """
+
     def __init__(self, name=None, yards=120, touchdowns=5, safety=1,
-                 interceptions=0, field_goals=3):
+                 interceptions=0, field_goals=3, stats=None):
+        if stats is None:
+            self.stats = {'safety': 0, 'td': 0}
+        else:
+            self.stats = stats
         self.name = name
         self.yards = yards
         self.touchdowns = touchdowns
@@ -17,8 +21,8 @@ class Player:
         self.field_goals = field_goals
 
     def get_points(self):
-        '''Gets points scored by the player from stats
-        '''
+        """Gets points scored by the player from stats
+        """
         td_points = 6 * self.stats['td']
         safety_points = 2 * self.stats['safety']
         total_points = td_points + safety_points
@@ -26,9 +30,10 @@ class Player:
 
 
 class Quarterback(Player):
-    '''Override certain parameters of the default Player class and add some
+    """Override certain parameters of the default Player class and add some
     functionality unique to quarterbacks
-    '''
+    """
+
     def __init__(self, name=None, yards=130, touchdowns=5, completed_passes=20,
                  interceptions=4, safety=None, field_goals=None):
         super().__init__(name=name, yards=yards, touchdowns=touchdowns,
@@ -36,8 +41,8 @@ class Quarterback(Player):
         self.completed_passes = completed_passes
 
     def passing_score(self):
-        '''This is a random formula... FYI
-        '''
+        """This is a random formula... FYI
+        """
         score = self.completed_passes - (2 * self.interceptions)
         return score
 

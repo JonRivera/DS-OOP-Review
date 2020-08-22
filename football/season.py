@@ -1,20 +1,23 @@
-'''Tracks the season perfomance of different teams and generates a
-'''
+"""Tracks the season perfomance of different teams and generates
+"""
 from possible_values import *
 from game import Game
 from random import randint, uniform, sample
 
 
 def generate_rand_games(n=15):
-    '''Generate n random games using value lists in possible_values
-    '''
-    # Begin with enpty list
+    """Generate n random games using value lists, in possible_values module
+    """
+    # Begin with empty list
     games = []
 
     # For the specified number of games, create an instance of the Game
     # class...
     # TODO - You can also include the location and week number if desired
     for _ in list(range(n)):
+        # dont really care about which game were in so long as we store information
+        # of each game chronoloically
+        # The loop is already taken order into account give the list were looping over
         # Get team names by sampling team_names from possible_values
         game = Game(teams=sample(team_names, k=2))
 
